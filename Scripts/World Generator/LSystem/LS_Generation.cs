@@ -2,24 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LS_Generation
+namespace LSystem.StringGeneration
 {
-    public string GenerateSentence(string sentence,LS_Rules rules)
+    public class LS_Generation
     {
-        string nextSentece = new string("");
-        for(int i = 0; i < sentence.Length; i++)
+        public string GenerateSentence(string sentence, LS_Rules rules)
         {
-            char currentChar = sentence[i];
-            foreach(LS_Rules.Rule rule in rules.Rules)
+            string nextSentece = new string("");
+            foreach (char c in sentence)
             {
-                if (Equals(currentChar.ToString(), rule.A))
-                {
-                    nextSentece += rule.B;
-                }
+                nextSentece += GenerateNextStep(c, rules);
             }
+
+            return nextSentece;
         }
 
+        private string GenerateNextStep(char c, LS_Rules rules)
+        {
+            bool found = false;
+            foreach (LS_Rules.Rule rule in rules.Rules)
+            {
+                if (Equals(c.ToString(), rule.A))
+                {
+                    found = true;
+                    return rule.B;
+                }
+            }
+            if (!found)
+            {
+                return c.ToString();
+            }
 
-        return nextSentece;
+            return new string("");
+
+        }
     }
 }

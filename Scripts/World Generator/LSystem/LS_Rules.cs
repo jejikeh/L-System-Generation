@@ -1,25 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class LS_Rules 
+
+namespace LSystem.StringGeneration
 {
     [System.Serializable]
-    public class Rule
+    public class LS_Rules
     {
-        [SerializeField]
-        public string A, B;
-        public Rule(string a, string b)
+        [System.Serializable]
+        public class Rule
         {
-            A = a; B = b;
+            [SerializeField]
+            public string A, B;
+
+
+            public Rule(string a, string b)
+            {
+                A = a; B = b;
+            }
         }
-    }
 
-    [SerializeField] private List<Rule> _rules;
-    public List<Rule> Rules { get { return _rules; } }
+        [SerializeField] private List<Rule> _rules;
+        public List<Rule> Rules { get { return _rules; } }
 
-    public LS_Rules(List<Rule> rules)
-    {
-        _rules = rules;
+
+        public LS_Rules(List<Rule> rules)
+        {
+            _rules = rules;
+        }
     }
 }
