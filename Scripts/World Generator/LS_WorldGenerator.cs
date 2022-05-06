@@ -19,7 +19,7 @@ public class LS_WorldGenerator : MonoBehaviour
     private List<Vector3> _steps = new List<Vector3>();
 
 
-    //private LS_Turtle _turtle = new LS_Turtle();
+    private LSystem.LS_Turtle _turtle = new LSystem.LS_Turtle();
 
     void Start()
     {
@@ -30,62 +30,19 @@ public class LS_WorldGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            _sentence = _lsGeneration.GenerateSentence(_sentence, _rules); 
+            _sentence = _lsGeneration.GenerateSentence(_sentence, _rules);
             Debug.Log(_sentence);
-            DrawTree();
+            DrawTree(_turtle.GenerateSteps(_sentence, Vector3.zero, _length, _angle));
         }
     }
 
-    public void DrawTree()
+    public void DrawTree(List<LSystem.LS_TurtleStep> steps)
     {
-        Stack<LSystem.LS_Turtle> points = new Stack<LSystem.LS_Turtle>();
-        Vector3 currentPosition = Vector3.zero;
-        Vector3 tempPosition = Vector3.zero;
-        Vector3 direction = Vector3.forward;
 
-        _steps.Add(currentPosition);
-
-        foreach(char c in _sentence)
+        foreach(LSystem.LS_TurtleStep step in steps)
         {
-            EncodingSteps steps = (EncodingSteps)c;
-            switch (steps)
-            {
-                case EncodingSteps.save:
-                    points.Push(new LSystem.LS_Turtle(currentPosition, direction, _length));
-                    break;
-                case EncodingSteps.load:
-                    if(points.Count > 0)
-                    {
-                        LSystem.LS_Turtle turtle = points.Pop();
-                        currentPosition = turtle.Position;
-                        direction = turtle.Direction;
-                        _length = turtle.Length;
-                    } else
-                    {
-                        throw new System.Exception("die");
-                    }
-                    break;
-                case EncodingSteps.draw:
-                    tempPosition = currentPosition;
-                    currentPosition += direction * _length;
-                    DrawLine(tempPosition, currentPosition);
-                    //_length -= 2;
-                    _steps.Add(currentPosition);
-                    break;
-                case EncodingSteps.turnRight:
-                    direction = Quaternion.AngleAxis(_angle, Vector3.up) * direction; 
-                    break;
-                case EncodingSteps.turnLeft:
-                    direction = Quaternion.AngleAxis(-_angle, Vector3.up) * direction;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        foreach(Vector3 position in _steps)
-        {
-            Instantiate(_prefab,position,Quaternion.identity);
+            Instantiate(_prefab,step.Position,Quaternion.identity);
+            //Debug.Log(step.Direction);
         }
     }
 

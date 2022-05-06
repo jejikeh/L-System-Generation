@@ -332,13 +332,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rules:
     _rules:
-    - A: A
-      B: AB
-    - A: B
-      B: A
-  _axiom: A
-  _length: 3
-  iterations: 7
+    - A: F
+      B: FF+[+F-F-F]-[-F+F+F]
+  _axiom: F
+  _prefab: {fileID: 4046412800814369495, guid: caab3ee3a838ed7498f7f3600e415c1b, type: 3}
+  _lineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  _length: 8
+  _angle: 30
 --- !u!4 &1044107364
 Transform:
   m_ObjectHideFlags: 0
