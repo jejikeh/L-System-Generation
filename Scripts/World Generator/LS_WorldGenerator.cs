@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class LS_WorldGenerator : MonoBehaviour
 {
+
+    /* todo 
+        1. Remame core files
+        2. Re - create LS_RULES and LS_TURTLESTEP 
+    i think merge ls_rules and ls_turtlestep (encoding steps) in one class
+    where actions will be a script reference
+
+    */
+
     [Header("World Generation settings")]
     [SerializeField] private string _axiom;
     [SerializeField] private LSystem.StringGeneration.LS_Rules _rules;
-    private LSystem.StringGeneration.LS_Generation _lsGeneration = new LSystem.StringGeneration.LS_Generation(); // l-system generator
     private string _sentence;
 
 
@@ -19,6 +27,7 @@ public class LS_WorldGenerator : MonoBehaviour
     private List<Vector3> _steps = new List<Vector3>();
 
 
+    private LSystem.StringGeneration.LS_Generation _lsGeneration = new LSystem.StringGeneration.LS_Generation(); // l-system generator
     private LSystem.LS_Turtle _turtle = new LSystem.LS_Turtle();
 
     void Start()
@@ -36,24 +45,13 @@ public class LS_WorldGenerator : MonoBehaviour
         }
     }
 
-    public void DrawTree(List<LSystem.LS_TurtleStep> steps)
+    public void DrawTree(List<LSystem.TurtleStep> steps)
     {
 
-        foreach(LSystem.LS_TurtleStep step in steps)
+        foreach(LSystem.TurtleStep step in steps)
         {
             Instantiate(_prefab,step.Position,Quaternion.identity);
             //Debug.Log(step.Direction);
         }
-    }
-
-    private void DrawLine(Vector3 start, Vector3 end)
-    {
-        GameObject line = new GameObject("line");
-        line.transform.position = start;
-        LineRenderer lineRenderer = line.AddComponent<LineRenderer>();
-        lineRenderer.material = _lineMaterial;
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.SetPosition(0, start);
-        lineRenderer.SetPosition(1, end);
     }
 }
