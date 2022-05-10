@@ -61,7 +61,7 @@ public class LS_WorldGenerator : MonoBehaviour
     {
         for(int i = 1; i < steps.Count; i++)
         {
-            Debug.DrawLine(steps[i - 1].Position,steps[i].Position);
+            Debug.DrawLine(steps[i - 1].Position,steps[i].Position,Color.black);
         }
     }
 }
