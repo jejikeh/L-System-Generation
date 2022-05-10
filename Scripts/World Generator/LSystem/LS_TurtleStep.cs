@@ -15,7 +15,7 @@ namespace LSystem
             Direction = direction;
             Length = length;
         }
-        public TurtleStep(TurtleStep turtleStep{
+        public TurtleStep(TurtleStep turtleStep){
             Position = turtleStep.Position;
             Direction = turtleStep.Direction;
             Length = turtleStep.Length;

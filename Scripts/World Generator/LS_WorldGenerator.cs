@@ -54,4 +54,12 @@ public class LS_WorldGenerator : MonoBehaviour
             //Debug.Log(step.Direction);
         }
     }
+
+    private void DrawLine(List<Vector3> positions)
+    {
+        foreach (Vector3 position in positions)
+        {
+            Debug.DrawLine(position,)
+        }
+    }
 }
