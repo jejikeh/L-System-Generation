@@ -17,6 +17,7 @@ public class LS_WorldGenerator : MonoBehaviour
     [SerializeField] private string _axiom;
     [SerializeField] private LSystem.StringGeneration.LS_Rules _rules;
     private string _sentence;
+    private List<LSystem.TurtleStep> _steps = new List<LSystem.TurtleStep>();
 
 
     [Header("LSystem Visualizer")]
@@ -24,7 +25,6 @@ public class LS_WorldGenerator : MonoBehaviour
     [SerializeField] private Material _lineMaterial;
     [SerializeField] private int _length;
     [SerializeField] private float _angle;
-    private List<Vector3> _steps = new List<Vector3>();
 
 
     private LSystem.StringGeneration.LS_Generation _lsGeneration = new LSystem.StringGeneration.LS_Generation(); // l-system generator
@@ -41,11 +41,13 @@ public class LS_WorldGenerator : MonoBehaviour
         {
             _sentence = _lsGeneration.GenerateSentence(_sentence, _rules);
             Debug.Log(_sentence);
-            DrawTree(_turtle.GenerateSteps(_sentence, Vector3.zero, _length, _angle));
+            _steps = _turtle.GenerateSteps(_sentence, Vector3.zero, _length, _angle);
+            CreateTree(_steps);
         }
+        DebugDrawLine(_steps);
     }
 
-    public void DrawTree(List<LSystem.TurtleStep> steps)
+    public void CreateTree(List<LSystem.TurtleStep> steps)
     {
 
         foreach(LSystem.TurtleStep step in steps)
@@ -55,11 +57,11 @@ public class LS_WorldGenerator : MonoBehaviour
         }
     }
 
-    private void DrawLine(List<Vector3> positions)
+    private void DebugDrawLine(List<LSystem.TurtleStep> steps)
     {
-        foreach (Vector3 position in positions)
+        for(int i = 1; i < steps.Count; i++)
         {
-            Debug.DrawLine(position,)
+            Debug.DrawLine(steps[i - 1].Position,steps[i].Position);
         }
     }
 }
