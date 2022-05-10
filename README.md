@@ -9,7 +9,7 @@ rule used :
 ```C#
   class Rule{
     public string A = "F";
-    public string B = "FF+[+F-F-F]-[-F+F+F];
+    public string B = "FF+[+F-F-F]-[-F+F+F]";
   }
 ```
 ## How to use?
