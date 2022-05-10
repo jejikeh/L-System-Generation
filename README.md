@@ -1,5 +1,17 @@
-L-System for Unity.
+# L-System for Unity.
+no random generation yet :(
+## Screenshot
+![Tree](/gitjubimage.png?raw=true "Random tree")
 
+it`s a simple example of tree generation.
+
+rule used : 
+```C#
+  class Rule{
+    public string A = "F";
+    public string B = "FF+[+F-F-F]-[-F+F+F];
+  }
+```
 ## How to use?
 1. Prepare strings:
 
