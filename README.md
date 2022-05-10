@@ -1,7 +1,7 @@
 # L-System for Unity.
 no random generation yet :(
 ## Screenshot
-![Tree](/gitjubimage.png?raw=true "Random tree")
+![Tree](/githubimage.png?raw=true "Random tree")
 
 it`s a simple example of tree generation.
 
