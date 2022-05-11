@@ -22,7 +22,7 @@ private LSystem.StringGenerator.LS_Rules // cteate list of rules or something
 private _sentence = _axiom 
 ```
 
-2. l-system classes
+2. l-system instances of the classes
 ```C#
 private LSystem.StringGeneration.LS_Generation _lsGeneration = new LSystem.StringGeneration.LS_Generation(); // l-system generator
 private LSystem.LS_Turtle _turtle = new LSystem.LS_Turtle();
