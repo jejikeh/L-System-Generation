@@ -18,7 +18,7 @@ rule used :
 ```C#
 // First create axiom , rules and sentence
 private string _axiom = "FF";  // like a starting point
-private LSystem.StringGenerator.LS_Rules // cteate list of rules or something
+private LSystem.StringGenerator.LS_Rules // rules
 private _sentence = _axiom 
 ```
 
