@@ -1,7 +1,7 @@
 # L-System for Unity.
 no random generation yet :(
 ## Screenshot
-![Tree](/gitjubimage.png?raw=true "Random tree")
+![Tree](/githubimage.png?raw=true "Random tree")
 
 it`s a simple example of tree generation.
 
@@ -9,7 +9,7 @@ rule used :
 ```C#
   class Rule{
     public string A = "F";
-    public string B = "FF+[+F-F-F]-[-F+F+F];
+    public string B = "FF+[+F-F-F]-[-F+F+F]";
   }
 ```
 ## How to use?
@@ -18,11 +18,11 @@ rule used :
 ```C#
 // First create axiom , rules and sentence
 private string _axiom = "FF";  // like a starting point
-private LSystem.StringGenerator.LS_Rules // cteate list of rules or something
+private LSystem.StringGenerator.LS_Rules // rules
 private _sentence = _axiom 
 ```
 
-2. l-system classes
+2. l-system instances of the classes
 ```C#
 private LSystem.StringGeneration.LS_Generation _lsGeneration = new LSystem.StringGeneration.LS_Generation(); // l-system generator
 private LSystem.LS_Turtle _turtle = new LSystem.LS_Turtle();
