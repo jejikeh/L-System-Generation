@@ -16,7 +16,7 @@ namespace LSystem.StringGeneration
 
             return nextSentece;
         }
-
+            
         private string GenerateNextStep(char c, LS_Rules rules)
         {
             bool found = false;

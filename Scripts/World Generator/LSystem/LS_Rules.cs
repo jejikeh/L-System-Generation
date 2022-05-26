@@ -10,7 +10,7 @@ namespace LSystem.StringGeneration
         [System.Serializable]
         public class Rule
         {
-            [SerializeField]
+                [SerializeField]
             public string A, B;
 
 
